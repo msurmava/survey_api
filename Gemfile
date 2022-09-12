@@ -42,6 +42,7 @@ group :development, :test do
 end
 
 gem "jwt"
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]

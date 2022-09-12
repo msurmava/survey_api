@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate, only: [:create, :update, :destory]
+
   def index
     sql = "select * from companies "
     @companies =  ActiveRecord::Base.connection.execute(sql)
@@ -13,7 +15,7 @@ class CompaniesController < ApplicationController
     if @company.save 
       render json: {message: "company #{@company.name} created"}
     else
-      render json: {errors: "company couldn't be created"}
+      render json: {errors: @company.errors}, status: 400
     end
   end
 
