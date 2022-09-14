@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_073646) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_14_115405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_073646) do
     t.index ["user_id"], name: "index_employments_on_user_id"
   end
 
+  create_table "researchcompanies", force: :cascade do |t|
+    t.bigint "research_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_researchcompanies_on_company_id"
+    t.index ["research_id"], name: "index_researchcompanies_on_research_id"
+  end
+
+  create_table "researches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -44,4 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_073646) do
 
   add_foreign_key "employments", "companies"
   add_foreign_key "employments", "users"
+  add_foreign_key "researchcompanies", "companies"
+  add_foreign_key "researchcompanies", "researches"
 end
