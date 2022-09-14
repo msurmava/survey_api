@@ -1,4 +1,5 @@
 class EmploymentsController < ApplicationController
+  before_action :authenticate, only: [:create]
   before_action :get_company, :get_user
 
   def create 
