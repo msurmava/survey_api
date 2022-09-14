@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :researches do
     resources :researchcompanies, only: [:create]
+    resources :inquiries
   end
 
   resources :companies do 
