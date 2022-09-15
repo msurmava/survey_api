@@ -13,7 +13,7 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = @research.inquiries.new(name: params[:name])
+    @inquiry = @research.inquiries.new(inquiries_params)
     @inquiry.research = @research
     if @inquiry.save
       render json: {message: "inquiry '#{@inquiry.name}' registered for #{@research.name} research"}
@@ -46,5 +46,9 @@ class InquiriesController < ApplicationController
 
   def get_inquiry
     @inquiry = Inquiry.find(params[:id])    
+  end
+
+  def inquiries_params
+    params.require(:inquiry).permit(:name)
   end
 end
