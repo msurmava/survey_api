@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :researches do
     resources :researchcompanies, only: [:create]
-    resources :inquiries
+    resources :inquiries do
+      resources :questions do
+        resources :options
+        resources :answers
+      end
+    end
   end
 
   resources :companies do 
@@ -14,4 +19,8 @@ Rails.application.routes.draw do
   resources :users
   post "login", to: "authentication#login"
   post "logout", to: "authentication#logout"
+
+  resources :responders, only: [:create]
+  post "responder_login", to: "responders#login"
+  post "responder_logout", to: "responders#logout"
 end
