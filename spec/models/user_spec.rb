@@ -24,11 +24,11 @@ RSpec.describe User, type: :model do
 
   context 'attributes' do
     it 'has email' do
-      expect{user.email}.not_to raise_error(NoMethodError)
+      expect{user.email}.not_to raise_error
     end
 
     it 'has password' do
-      expect{user.password_digest}.not_to raise_error(NoMethodError)
+      expect{user.password_digest}.not_to raise_error
     end
 
     it 'need this example to check if tests really checks' do
