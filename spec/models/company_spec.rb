@@ -15,11 +15,22 @@ RSpec.describe Company, type: :model do
     expect{FactoryBot.create(:company, name: company.name)}.to raise_error
   end
 
-  it 'has users-employees' do
-    expect(company.users).not_to be(nil)
-  end
+  context 'associations' do
+    it 'users/employees' do
+      expect(company.users).not_to be(nil)
+    end
 
-  it 'has researches' do
-    expect(company.researches).not_to be(nil)
+    it 'has researches collection' do
+      expect(company.researches).not_to be(nil)
+    end
+
+    it "should have many researches" do
+      subject { described_class.new }
+      assc = described_class.reflect_on_association(:researches)
+      expect(assc.macro).to eq :has_many
+    end
   end
+  
+
+  
 end

@@ -25,5 +25,18 @@ RSpec.describe Employment, type: :model do
     it {  expect(FactoryBot.build(:employment, user_id: '', company_id: company)).not_to be_valid}
   end
 
+  context 'associations' do
+    it "should belong to companies" do
+      subject { described_class.new }
+      assc = described_class.reflect_on_association(:company)
+      expect(assc.macro).to eq :belongs_to
+    end
+
+    it "should belong to users" do
+      subject { described_class.new }
+      assc = described_class.reflect_on_association(:user)
+      expect(assc.macro).to eq :belongs_to
+    end
+  end
 
 end

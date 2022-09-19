@@ -25,6 +25,18 @@ RSpec.describe Inquiry, type: :model do
     it "belongs to one research" do
       expect{inquiry.research}.not_to raise_error(NoMethodError)
     end
+
+    it "should have many answers" do
+      subject { described_class.new }
+      assc = described_class.reflect_on_association(:research)
+      expect(assc.macro).to eq :belongs_to
+    end
+
+    it "should have many answers" do
+      subject { described_class.new }
+      assc = described_class.reflect_on_association(:questions)
+      expect(assc.macro).to eq :has_many
+    end
   end
 
 end

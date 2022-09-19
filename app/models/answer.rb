@@ -20,7 +20,7 @@ class Answer < ApplicationRecord
 
   def option_only_answers_its_question
     get_question
-    errors.add(:option, 'wrong option') if !@question.options.collect(&:id).include?(option_id)
+    errors.add(:option, 'wrong option') if @question.optional == true && !@question.options.collect(&:id).include?(option_id)
   end
   private
 
