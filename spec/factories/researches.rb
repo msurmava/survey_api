@@ -1,5 +1,7 @@
+require 'securerandom'
+
 FactoryBot.define do
   factory :research do
-    name { "MyString" }
+    name {SecureRandom.alphanumeric(7)}
   end
 end

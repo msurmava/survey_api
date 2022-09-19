@@ -1,12 +1,8 @@
+require 'securerandom'
 FactoryBot.define do
-  factory :option_correct do
-    question_id { FactoryBot.create(:queston_optional).id }
-    correct { true }
-    body { "MyString" }
-  end
-  factory :option_wrong do
-    question_id { FactoryBot.create(:queston_optional).id }
+  factory :option do
+    question{ FactoryBot.create(:question) }
     correct { false }
-    body { "MyString" }
+    body { SecureRandom.alphanumeric(5) }
   end
 end

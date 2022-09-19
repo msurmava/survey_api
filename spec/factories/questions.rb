@@ -1,13 +1,11 @@
+require 'securerandom'
+
 FactoryBot.define do
-  factory :queston_optional do
-    inquiry_id {  FactoryBot.create(:inquiry).id }
-    body { "MyString" }
-    option { true }
+  factory :question do
+    inquiry{  FactoryBot.create(:inquiry) }
+    body { SecureRandom.alphanumeric(5) }
+    optional { false }
   end
 
-  factory :queston_non_optional do
-    inquiry_id {  FactoryBot.create(:inquiry).id }
-    body { "MyString" }
-    option { false }
-  end
+
 end

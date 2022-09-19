@@ -1,6 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :question
-  belongs_to :user
   has_many :answerresponders, dependent: :destroy
   has_many :responders, through: :answerresponders
   validate :optional_question_has_option_as_answer

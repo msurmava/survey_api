@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       expect{user.password_digest}.not_to raise_error
     end
 
-    it 'need this example to check if tests really checks' do
+    it 'need this example to check if tests really check' do
       expect{user.emaail}.to raise_error(NoMethodError)
     end
   end
