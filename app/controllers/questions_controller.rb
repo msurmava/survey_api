@@ -5,6 +5,11 @@ class QuestionsController < ApplicationController
     render json: {questions: @questions}
   end
 
+  def show 
+    @question  = Question.find(params[:id])
+    render json: {question: @question}
+  end
+
   def create
     @question = Question.new(question_params)
     @question.inquiry = @inquiry
